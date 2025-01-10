@@ -17,7 +17,7 @@ fn on_mode_change(args: AutocmdCallbackArgs) -> Result<bool> {
 }
 
 #[oxi::plugin]
-fn nvim_mode_leds() -> oxi::Result<bool> {
+fn nvim_mode_leds() -> oxi::Result<()> {
     // Create a new `Greetings` command.
     let opts = CreateCommandOpts::builder()
         .bang(true)
@@ -40,5 +40,5 @@ fn nvim_mode_leds() -> oxi::Result<bool> {
         .build();
     api::create_autocmd(["ModeChanged"], &opts).expect("Error while creating auto command");
 
-    return Ok(false);
+    return Ok(());
 }
